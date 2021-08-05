@@ -130,6 +130,48 @@ public class P2UsersDAO {
 		return FAIL;
 	}// end - usersLogin method
 
+	public int usersUpdate(P1UsersVO user) {
+		Connection con = null;
+		// 쿼리문 실행을 위한 PreparedStatement 객체 생성
+		PreparedStatement pstmt = null;
+		
+		try{
+				con = DriverManager.getConnection(URL, DBID, DBPW);
+				
+				// 1. 쿼리문 작성
+				String sql = "UPDATE users SET upw = ?, uname = ?, email = ? WHERE uid = ?";
+				
+				// 2. 작성한 쿼리문 ? 자리에 적용할 자바 변수 삽입
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user.getUpw());
+				pstmt.setString(2, user.getUname());
+				pstmt.setString(3, user.getEmail());
+				pstmt.setString(4, user.getUid());
+				
+				// 3. 만든 쿼리문 실행
+				pstmt.executeUpdate();
+				// 위 코드들이 성공적으로 마무리되면 1 리턴 
+				return SUCCESS;
+			/* else 아래에 비밀번호가 틀린 경우, response를 이용해 로그아웃 페이지로 이동했었지만
+			 * DAO 내부에서는 jsp 파일 내장객체를 사용할 수 없으므로 결과 정보만 (계정 삭제 실패 값 0)리턴
+			 */
+		}catch(SQLException e){
+			System.out.println("에러: " + e);
+		}finally{
+			try{
+				if(con != null && !con.isClosed()){
+					con.close();
+				}
+				if(pstmt != null && !pstmt.isClosed()){
+					pstmt.close();
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+		// 상단 try블럭에서 코드가 정상적으로 진행되지 않을 경우 해당 블럭으로 이동해오기 때문에 실행이 제대로 되지 않았다는 0을 리턴
+		return FAIL;
+	}
 // 회원 탈퇴
 	/* 원래 대다수의 경우에는 DAO는 P1UsersVO 하나로 모든 처리를 해결할 수 있지만
 	 * 삭제 로직은 폼에서 입력받은 비밀번호와 원래 DB에 저장되어있던 비밀번호를 비교해야하기 때문에
@@ -232,5 +274,5 @@ public class P2UsersDAO {
 		}
 		// resultData에 저장한 자료들을 리턴
 		return resultData;
-	}// end - usersLogin method
+	}// end - getUsersInfo() method
 }

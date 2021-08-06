@@ -26,7 +26,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입 완료</title>
 </head>
 <body>
 	<h1><%= uid %>님 회원가입을 축하합니다.</h1>

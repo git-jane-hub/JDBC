@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
     <%-- 여기다시, 로그인 완료한 사람이 다시방문하면 로그인 오케이 창으로 이동 --%>
 <%
+    String id_session = (String)session.getAttribute("id_session");
+	if(id_session != null){
+		response.sendRedirect("R4Login_ok.jsp");
+	}
 	
 %>
 <!DOCTYPE html>
@@ -16,7 +20,7 @@
 		<input type = "text" name = "uid" placeholder = "ID" required><br>
 		<input type = "password" name = "upw" placeholder = "PASSWORD" required><br>
 		<input type = "submit" value = "LOGIN"><br>
-		<a href = "R02JOIN_form.jsp">회원가입 창으로 이동</a>
+		<a href = "R2Join_form.jsp">회원가입 창으로 이동</a>
 	</form>
 </body>
 </html>

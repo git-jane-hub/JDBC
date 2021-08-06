@@ -4,6 +4,9 @@
     pageEncoding="UTF-8"%>
 <%
 	// 1. 폼에서 전달받은 데이터
+	request.setCharacterEncoding("UTF-8");
+	response.setCharacterEncoding("UTF-8");
+	
 	String uid = (String)session.getAttribute("id_session");
 	String upw = request.getParameter("upw");
 	String uname = request.getParameter("uname");

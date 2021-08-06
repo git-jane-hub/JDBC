@@ -34,8 +34,8 @@
 	<form action = "P10User_update_ok.jsp" method = "post">
 		<input type = "text" name = "uid" value = "<%= resultData.getUid() %>" readonly /><br>
 		<input type = "password" name = "upw" placeholder = "PASSWORD" required /><br>
-		<input type = "text" name = "uname" value = "<%= resultData.getUname() %>" placeholder = "NAME" /><br>
-		<input type = "email" name = "email" value = "<%= resultData.getEmail() %>" placeholder = "E-MAIL" /><br>
+		<input type = "text" name = "uname" value = "<%= resultData.getUname() %>" placeholder = "NAME" required/><br>
+		<input type = "email" name = "email" value = "<%= resultData.getEmail() %>" placeholder = "E-MAIL" required/><br>
 		<input type = "submit" value = "UPDATE" /><br>
 		<a href = "P04User_login_ok.jsp">회원정보 수정 취소</a>
 	</form>

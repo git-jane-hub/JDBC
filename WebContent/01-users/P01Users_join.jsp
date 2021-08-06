@@ -3,6 +3,7 @@
 <%@ page import = "java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- 중복된 아이디를 작성해도 로그인이 되기 때문에 중복 아이디값을 입력할 수 없는 로직 추가하기  --%>
 <%
 	request.setCharacterEncoding("utf-8");
 	response.setCharacterEncoding("utf-8");
@@ -12,12 +13,16 @@
 	String uname = request.getParameter("uname");
 	String email = request.getParameter("email");
 	
-	// 기존에 있던 회원가입 로직을 DAO 클래스로 이동하고 DAO 클래스 받아오기 
-	P2UsersDAO dao = P2UsersDAO.getInstance();
-	
-	// VO 객체 생성 및 uid, upw, uname, email, setter로 입력
+	// 중복 아이디 작성 시 회원가입 실패 페이지로 이동
+	// VO 객체 생성 및 uid, upw, uname, email를 파라미터에 입력
 	P1UsersVO user = new P1UsersVO(uid, upw, uname, email);
+	P2UsersDAO dao = P2UsersDAO.getInstance();
 	// VO 객체를 dao에 넣어줌 
+	dao.usersJoinDup(user);
+	if(dao.usersJoinDup(user) != 1){
+		response.sendRedirect("P01Users_join_failed.jsp");
+	}
+	// 중복 아이디가 아니라면 추가
 	dao.usersJoin(user);
 %>
 <!DOCTYPE html>

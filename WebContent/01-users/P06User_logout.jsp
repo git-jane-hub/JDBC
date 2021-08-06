@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그아웃 완료</title>
 </head>
 <body>
 	<h1>로그아웃이 완료되었습니다.</h1>

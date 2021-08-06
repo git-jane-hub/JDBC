@@ -43,8 +43,9 @@
 <body>
 	<h1><%= uid %>님 환영합니다.</h1>
 	<h2>로그인에 성공했습니다.</h2>
-	<a href = "P06User_logout.jsp">로그아웃</a><br>
+	<a href = "P12User_get_all.jsp">회원 전체 목록</a><br>
 	<a href = "P09User_update_form.jsp">회원 정보 수정</a><br>
+	<a href = "P06User_logout.jsp">로그아웃</a><br>
 	<a href = "P07User_delete_form.jsp">회원 탈퇴 진행</a><br>
 </body>
 </html>

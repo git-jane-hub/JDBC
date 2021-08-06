@@ -64,12 +64,17 @@ public class R2UsersDAO {
 		ResultSet rs = null;
 		try {
 			con = DriverManager.getConnection(URL, DBID, DBPW);
-			String sql = "SELECT * FROM users WHERE uid = ?";
+			String sql = "SELECT * FROM users2 WHERE uid = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user.getUid());
-			pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return SUCCESS;				
+				if(rs.getString("uid").equals(user.getUid()) 
+						&& rs.getString("upw").equals(user.getUpw())) {
+					return SUCCESS;				
+				}else {
+					return FAIL;
+				}
 			}else {
 				return FAIL;
 			}

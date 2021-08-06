@@ -1,3 +1,5 @@
+<%@page import="kr.co.ictedu.P2UsersDAO"%>
+<%@page import="kr.co.ictedu.P1UsersVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

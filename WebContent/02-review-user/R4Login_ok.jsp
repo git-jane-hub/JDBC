@@ -12,16 +12,13 @@
 	
 	R1UsersVO user = new R1UsersVO();
 	R2UsersDAO dao = R2UsersDAO.getInstance();
-	// 여기 오류, user에 요청해서 얻은 정보가 안들어간 것 같음
+	dao.usersLogin(user);
+	user.setUid(uid);
+	user.setUpw(upw);
+	// 여기 오류, user에 요청해서 얻은 정보가 안들어간 것 같음 - 다시
 	if(dao.usersLogin(user) == 1){
-		String dbId = user.getUid();
-		String dbPw = user.getUpw();
-		if(uid.equals(dbId) && upw.equals(dbPw)){
-			session.setAttribute("id_session", uid);
-			session.setAttribute("pw_session", upw);
-		}else{
-			response.sendRedirect("R5Login_failed.jsp");
-		}
+		session.setAttribute("id_session", uid);
+		session.setAttribute("pw_session", upw);
 	}else{
 		response.sendRedirect("R5Login_failed.jsp");
 	}

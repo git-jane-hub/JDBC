@@ -47,9 +47,9 @@
 					out.println("</tr>");
 				}
 			--%>
-			<%-- JSTL을 이용해서 작성 --%>
-			<%-- 반복문: for each, items에 향상된 for문의 우측요소, var에 좌측요소를 삽입 --%>
-			<c:forEach var = "user" items = "${userList}">
+			<%-- JSTL을 이용해서 작성 - 데이터타입 지정이 없음 --%>
+			<%-- 반복문: for each, items에 향상된 for문의 우측요소, var에 좌측요소를 삽입(해당 변수를 var에서 하나하나 출력해줌) --%>
+			<c:forEach var = "user" items = "<%= userList %>">	<%--스크립틀릿에서 선언된 변수는 표현식을 사용해야 함 --%>
 				<tr>
 					<td>${user.uid}</td>
 					<td>${user.uname}</td>

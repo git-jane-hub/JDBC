@@ -3,6 +3,7 @@
 <%@ page import = "java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- 해당 페이지를 웹에서 열고 get 방식으로 주소가 넘어가는 것을 통해 url뒤에 작성해도 회원가입이 진행됨 (url?uid=e&upw=e&unam=e&email=e@e) --%>
 <%-- 중복된 아이디를 작성해도 로그인이 되기 때문에 중복 아이디값을 입력할 수 없는 로직 추가하기  --%>
 <%
 	request.setCharacterEncoding("utf-8");
